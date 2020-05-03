@@ -1,18 +1,18 @@
+//inserisco le librerie.
 #include <CapacitiveSensor.h>
 #include <Adafruit_NeoPixel.h> 
 #include "FastLED.h"
-#include "FastLED.h"
-#define NUM_LEDS 140 
+#define NUM_LEDS 140 //definisco il numero di led impiegati.
 CRGB leds[NUM_LEDS];
 
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
 
-const int ledPin = 6;     // the number of the neopixel strip
-const int numLeds = 140;
+const int ledPin = 6;     //definisco dovè collegato il pin delle strisce.
+const int numLeds = 140;  //definisco il numero di led impiegati.
 int I;
-CapacitiveSensor   cs_4_2 = CapacitiveSensor(4,2);
+CapacitiveSensor   cs_4_2 = CapacitiveSensor(4,2); 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(numLeds, ledPin, NEO_GRB + NEO_KHZ800);
 void setup()                    
 {
