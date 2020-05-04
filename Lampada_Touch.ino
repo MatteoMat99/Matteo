@@ -1,4 +1,4 @@
-//inserisco le librerie.
+//richiamo le librerie.
 #include <CapacitiveSensor.h>
 #include <Adafruit_NeoPixel.h> 
 #include "FastLED.h"
@@ -6,20 +6,20 @@
 CRGB leds[NUM_LEDS];
 
 #ifdef __AVR__
-  #include <avr/power.h>
+#include <avr/power.h> //Molti AVR contengono un registro di riduzione della potenza (PRR) o registri (PRRx) che consente di ridurre il consumo di energia disabilitando o abilitando varie periferiche di bordo secondo necessità.
 #endif
 
 const int ledPin = 6;     //definisco dovè collegato il pin delle strisce.
 const int numLeds = 140;  //definisco il numero di led impiegati.
 int I;
-CapacitiveSensor   cs_4_2 = CapacitiveSensor(4,2); 
+CapacitiveSensor   cs_4_2 = CapacitiveSensor(4,2); //definisco i deu pin di collegamento per il sensore capacitivo.
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(numLeds, ledPin, NEO_GRB + NEO_KHZ800);
 void setup()                    
 {
    
   strip.begin();
-  strip.setBrightness(155);
-  cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);     // turn off autocalibrate on channel 1 - just as an example
+  strip.setBrightness(155);  // imposto la luminostità massima (va da 0 a 256)
+  cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);     //eseguo la calibrazione del sensore capacitivo.
 
   
 }
@@ -30,9 +30,9 @@ void loop()
   
     long total1 =  cs_4_2.capacitiveSensor(30);
  
+//inizio la funzione di switch.
 
-
-if (total1>500){
+if (total1>500){  
   
   if(++I > 4) I = 0;
 }
@@ -41,21 +41,21 @@ Serial.println(total1);
 switch(I){
  
         case 0:
-          colorWipe(strip.Color(  0,   0,   0), 0);    // Black/off
+          colorWipe(strip.Color(  0,   0,   0), 0);    // tutti i led spenti
           break;
         case 1:
-             rainbow(0);  // Red
+             rainbow(0);  //modalità arcobaleno
           break;
         case 2:
-          colorWipe(strip.Color(  255, 255, 255), 0);    
+          colorWipe(strip.Color(  255, 255, 255), 0); //colore bianco   
           break;
          
         case 3:
-          Fire(55,70,20) ;       
+          Fire(55,70,20) ;  //modalità fuoco     
           break ;         
              
         case 4:           
-           colorWipe(strip.Color(  125,  30, 0), 0);
+           colorWipe(strip.Color(  125,  30, 0), 0); //colore luce calda
            break;
   
   
@@ -65,7 +65,7 @@ switch(I){
 
 
 }
-
+//esco dal Loop e iniziano le varie animazioni.
 
 void colorWipe(uint32_t color, int wait) {
   for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
