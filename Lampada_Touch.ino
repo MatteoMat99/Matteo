@@ -65,7 +65,7 @@ switch(I){
 
 
 }
-//esco dal Loop e iniziano le varie animazioni.
+//esco dal Loop e iniziano le varie funzioni delle animazioni.
 
 void colorWipe(uint32_t color, int wait) {
   for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
