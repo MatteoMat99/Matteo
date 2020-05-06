@@ -39,7 +39,7 @@ if (total1>500){
   
   if(++I > 4) I = 0;
 }
-delay(200);
+delay(200); // per evitare il debounce.
 Serial.println(total1);
 switch(I){
  
