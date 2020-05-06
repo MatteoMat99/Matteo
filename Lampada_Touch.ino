@@ -1,3 +1,6 @@
+//premetto subito che questo codice presenta degli errori.
+//progetto realizzato da Matteo Faggian.
+
 //richiamo le librerie.
 #include <CapacitiveSensor.h>
 #include <Adafruit_NeoPixel.h> 
@@ -36,7 +39,7 @@ if (total1>500){
   
   if(++I > 4) I = 0;
 }
-
+delay(200);
 Serial.println(total1);
 switch(I){
  
